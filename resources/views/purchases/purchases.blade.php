@@ -89,7 +89,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">Purchase</th>
+                                    <th scope="col">@sortablelink('purchase')</th>
                                     <th scope="col">@sortablelink('supplier.name', 'Supplier')</th>
                                     <th scope="col">@sortablelink('purchase_date', 'Date')</th>
                                     <th scope="col">@sortablelink('total')</th>

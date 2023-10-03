@@ -84,7 +84,7 @@
                 </div>
 
                 <hr>
-
+                
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         <table class="table table-striped align-middle">

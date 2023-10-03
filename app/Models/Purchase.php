@@ -46,4 +46,16 @@ class Purchase extends Model
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('purchase_date', 'like', '%' . $search . '%')
+                    ->orWhereHas('supplier', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
+            });
+        });
+    }
 }

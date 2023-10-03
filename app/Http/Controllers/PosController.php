@@ -24,7 +24,7 @@ class PosController extends Controller
          // Retrieve popular products based on the number of orders
         $popularProducts = Product::withCount('orders')
         ->orderBy('orders_count', 'desc')
-        ->take(10) // Adjust the number of popular products as needed
+        ->take(10)
         ->get();
 
         $products = Product::with(['category', 'unit'])

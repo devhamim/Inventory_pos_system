@@ -58,10 +58,14 @@ class Product extends Model
                 $query->where('product_name', 'like', '%' . $search . '%')
                     ->orWhereHas('category', function ($query) use ($search) {
                         $query->where('name', 'like', '%' . $search . '%');
+                    })->orWhereHas('unit', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
                     });
             });
         });
     }
+
+    // order details 
     public function orders()
     {
         return $this->hasMany(OrderDetails::class);
