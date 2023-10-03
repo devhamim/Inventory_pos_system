@@ -74,7 +74,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label class="small mb-1" for="name">Name <span class="text-danger">*</span></label>
+                                <label class="small mb-1" for="name">Full Name<span class="text-danger">*</span></label>
                                 <input class="form-control form-control-solid @error('name') is-invalid @enderror" id="name" name="name" type="text" placeholder="" value="{{ old('name') }}" />
                                 @error('name')
                                 <div class="invalid-feedback">
