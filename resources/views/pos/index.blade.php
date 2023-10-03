@@ -212,7 +212,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($products as $product)
+                                    @forelse ($popularProducts as $product)
                                     <tr>
                                         <th scope="row">{{ (($products->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
                                         {{-- <td>

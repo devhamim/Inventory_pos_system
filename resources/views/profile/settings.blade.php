@@ -91,7 +91,7 @@
         </div>
         <div class="col-lg-4">
             <!-- Two factor authentication card-->
-            <div class="card mb-4">
+            {{-- <div class="card mb-4">
                 <div class="card-header">Two-Factor Authentication</div>
                 <div class="card-body">
                     <p>Add another level of security to your account by enabling two-factor authentication. We will send you a text message to verify your login attempts on unrecognized devices and browsers.</p>
@@ -106,7 +106,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
             <!-- Delete account card-->
             <div class="card mb-4">
                 <div class="card-header">Delete Account</div>

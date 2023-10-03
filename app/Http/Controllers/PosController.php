@@ -21,6 +21,12 @@ class PosController extends Controller
             abort(400, 'The per-page parameter must be an integer between 1 and 100.');
         }
 
+         // Retrieve popular products based on the number of orders
+        $popularProducts = Product::withCount('orders')
+        ->orderBy('orders_count', 'desc')
+        ->take(10) // Adjust the number of popular products as needed
+        ->get();
+
         $products = Product::with(['category', 'unit'])
                 ->filter(request(['search']))
                 ->sortable()
@@ -35,6 +41,7 @@ class PosController extends Controller
             'products' => $products,
             'customers' => $customers,
             'carts' => $carts,
+            'popularProducts' => $popularProducts,
         ]);
     }
 
