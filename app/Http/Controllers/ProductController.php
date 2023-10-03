@@ -212,7 +212,7 @@ class ProductController extends Controller
             $row_limit    = $sheet->getHighestDataRow();
             $column_limit = $sheet->getHighestDataColumn();
             $row_range    = range( 2, $row_limit );
-            $column_range = range( 'J', $column_limit );
+            $column_range = range( 'K', $column_limit );
             $startcount = 2;
             $data = array();
             foreach ( $row_range as $row ) {

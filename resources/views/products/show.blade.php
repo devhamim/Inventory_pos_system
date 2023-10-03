@@ -72,23 +72,28 @@
                         Product Information
                     </div>
                     <div class="card-body">
-                        <!-- Form Group (product name) -->
-                        <div class="mb-3">
-                            <label class="small mb-1">Product name</label>
-                            <div class="form-control form-control-solid">{{ $product->product_name }}</div>
-                        </div>
-                        <!-- Form Row -->
                         <div class="row gx-3 mb-3">
-                            <!-- Form Group (type of product category) -->
+                        <!-- Form Group (product name) -->
+                            <div class="mb-3 col-md-6">
+                                <label class="small mb-1">Product name</label>
+                                <div class="form-control form-control-solid">{{ $product->product_name }}</div>
+                            </div>
                             <div class="col-md-6">
                                 <label class="small mb-1">Product category</label>
                                 <div class="form-control form-control-solid">{{ $product->category->name  }}</div>
                             </div>
+                        </div>
+                        <!-- Form Row -->
+                        <div class="row gx-3 mb-3">
                             <!-- Form Group (type of product unit) -->
                             <div class="col-md-6">
                                 <label class="small mb-1">Product unit</label>
                                 <div class="form-control form-control-solid">{{ $product->unit->name  }}</div>
                             </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1">Stock</label>
+                                <div class="form-control form-control-solid">{{ $product->stock  }}</div>
+                            </div> 
                         </div>
                         <!-- Form Row -->
                         <div class="row gx-3 mb-3">
@@ -103,17 +108,7 @@
                                 <div class="form-control form-control-solid">{{ $product->selling_price  }}</div>
                             </div>
                         </div>
-                        <!-- Form Group (stock) -->
-                        <div class="row gx-3 mb-3">
-                            <div class="col-md-6">
-                                <label class="small mb-1">Stock</label>
-                                <div class="form-control form-control-solid">{{ $product->stock  }}</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="small mb-1">Supplier</label>
-                                <div class="form-control form-control-solid">{{ $product->supplier_id  }}</div>
-                            </div>
-                        </div>
+                        
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1">Color</label>
