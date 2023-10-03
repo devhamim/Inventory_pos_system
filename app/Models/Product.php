@@ -54,7 +54,12 @@ class Product extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('product_name', 'like', '%' . $search . '%')->orWhere('category_id', 'like', '%' . $search . '%');
+            return $query->where(function ($query) use ($search) {
+                $query->where('product_name', 'like', '%' . $search . '%')
+                    ->orWhereHas('category', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
+            });
         });
     }
 }
