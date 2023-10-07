@@ -56,7 +56,12 @@
                                     <p class="inv-from-1">{{ $order->customer->name }}</p>
                                     <p class="inv-from-1">{{ $order->customer->phone }}</p>
                                     <p class="inv-from-1">{{ $order->customer->email }}</p>
-                                    <p class="inv-from-2">{{ $order->customer->address }}</p>    
+                                    <p class="inv-from-2">{{ $order->customer->address }}</p>
+                                @else
+                                    <p class="inv-from-1">Name: N/A</p>
+                                    <p class="inv-from-1">Number: N/A</p>
+                                    <p class="inv-from-1">Email: N/A</p>
+                                    <p class="inv-from-2">Address: N/A</p>     
                                 @endif
                                 
                             </div>

@@ -57,6 +57,11 @@
                                     <p class="inv-from-1">{{ $customer->phone }}</p>
                                     <p class="inv-from-1">{{ $customer->email }}</p>
                                     <p class="inv-from-2">{{ $customer->address }}</p>
+                                @else
+                                    <p class="inv-from-1">Name: N/A</p>
+                                    <p class="inv-from-1">Number: N/A</p>
+                                    <p class="inv-from-1">Email: N/A</p>
+                                    <p class="inv-from-2">Address: N/A</p>  
                                 @endif
                             </div>
                             <div class="col-sm-6 text-end mb-50">
