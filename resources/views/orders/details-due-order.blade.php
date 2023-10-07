@@ -34,12 +34,21 @@
                         <!-- Form Group (customer name) -->
                         <div class="col-md-6">
                             <label class="small mb-1">Name</label>
-                            <div class="form-control form-control-solid">{{ $order->customer->name }}</div>
+                            @if ($order->customer_id != null)
+                                <div class="form-control form-control-solid">{{ $order->customer->name }}</div>
+                            @else
+                                <div class="form-control form-control-solid">N/A</div>
+                            @endif
+                            
                         </div>
                         <!-- Form Group (customer email) -->
                         <div class="col-md-6">
                             <label class="small mb-1">Email</label>
-                            <div class="form-control form-control-solid">{{ $order->customer->email }}</div>
+                            @if ($order->customer_id != null)
+                                <div class="form-control form-control-solid">{{ $order->customer->email }}</div>
+                            @else
+                                <div class="form-control form-control-solid">N/A</div>
+                            @endif
                         </div>
                     </div>
                     <!-- Form Row -->
@@ -47,7 +56,11 @@
                         <!-- Form Group (customer phone number) -->
                         <div class="col-md-6">
                             <label class="small mb-1">Phone</label>
+                            @if ($order->customer_id != null)
                             <div class="form-control form-control-solid">{{ $order->customer->phone }}</div>
+                            @else
+                                <div class="form-control form-control-solid">N/A</div>
+                            @endif
                         </div>
                         <!-- Form Group (order date) -->
                         <div class="col-md-6">
@@ -97,7 +110,12 @@
                     <!-- Form Group (address) -->
                     <div class="mb-3">
                         <label  class="small mb-1">Address</label>
-                        <div class="form-control form-control-solid">{{ $order->customer->address }}</div>
+                        
+                        @if ($order->customer_id != null)
+                            <div class="form-control form-control-solid">{{ $order->customer->address }}</div>
+                        @else
+                            <div class="form-control form-control-solid">N/A</div>
+                        @endif
                     </div>
 
                     <!-- Submit button -->
@@ -163,7 +181,11 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title text-center mx-auto" id="modalCenterTitle">Invoice of {{ $order->customer->name }}<br/>Total Amount <b>${{ $order->total }}</b></h3>
+                <h3 class="modal-title text-center mx-auto" id="modalCenterTitle">Invoice of @if ($order->customer_id != null)
+                    <td>{{ $order->customer->name }}</td>
+                @else
+                    <td>N/A</td>
+                @endif<br/>Total Amount <b>${{ $order->total }}</b></h3>
             </div>
 
             <form action="{{ route('order.updateDueOrder') }}" method="POST">

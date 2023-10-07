@@ -114,7 +114,7 @@ class OrderController extends Controller
     public function createOrder(Request $request)
     {
         $rules = [
-            'customer_id' => 'required|numeric',
+            'customer_id' => '',
             'payment_type' => 'required|string',
             'pay' => 'required|numeric',
         ];

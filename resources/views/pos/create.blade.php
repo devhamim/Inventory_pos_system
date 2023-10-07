@@ -137,14 +137,14 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title text-center mx-auto" id="modalCenterTitle">Invoice of {{ $customer->name }}<br/>Total Amount ${{ Cart::total() }}</h3>
+                <h3 class="modal-title text-center mx-auto" id="modalCenterTitle">Invoice of @if ($customer && $customer->id != null){{ $customer->name }}@endif <br/>Total Amount ${{ Cart::total() }}</h3>
             </div>
 
             <form action="{{ route('pos.createOrder') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="modal-body">
-                        <input type="hidden" name="customer_id" value="{{ $customer->id }}">
+                        <input type="hidden" name="customer_id" value="@if ($customer && $customer->id != null){{ $customer->id }}@endif">
                         <div class="mb-3">
                             <!-- Form Group (type of product category) -->
                             <label class="small mb-1" for="payment_type">Payment <span class="text-danger">*</span></label>

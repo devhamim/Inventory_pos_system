@@ -102,7 +102,7 @@ class PosController extends Controller
 
         $customer = null;
 
-        if($request->customer_id == ''){
+        if($request->customer_id != ''){
 
             $rules = [
                 'customer_id' => 'required|string'

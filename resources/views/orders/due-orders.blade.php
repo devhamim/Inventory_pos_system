@@ -103,7 +103,11 @@
                                 <tr>
                                     <th scope="row">{{ (($orders->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
                                     <td>{{ $order->invoice_no }}</td>
-                                    <td>{{ $order->customer->name }}</td>
+                                    @if ($order->customer_id != null)
+                                        <td>{{ $order->customer->name }}</td>
+                                    @else
+                                        <td>N/A</td>
+                                    @endif
                                     <td>{{ $order->order_date }}</td>
                                     <td>{{ $order->payment_type }}</td>
                                     <td>
