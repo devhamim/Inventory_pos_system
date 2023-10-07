@@ -52,10 +52,12 @@
                         <div class="row">
                             <div class="col-sm-6 mb-50">
                                 <h4 class="inv-title-1">Customer</h4>
-                                <p class="inv-from-1">{{ $customer->name }}</p>
-                                <p class="inv-from-1">{{ $customer->phone }}</p>
-                                <p class="inv-from-1">{{ $customer->email }}</p>
-                                <p class="inv-from-2">{{ $customer->address }}</p>
+                                @if ($customer && $customer->id != null)    
+                                    <p class="inv-from-1">{{ $customer->name }}</p>
+                                    <p class="inv-from-1">{{ $customer->phone }}</p>
+                                    <p class="inv-from-1">{{ $customer->email }}</p>
+                                    <p class="inv-from-2">{{ $customer->address }}</p>
+                                @endif
                             </div>
                             <div class="col-sm-6 text-end mb-50">
                                 <h4 class="inv-title-1">Store</h4>

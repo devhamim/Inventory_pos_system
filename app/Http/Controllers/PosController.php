@@ -99,17 +99,24 @@ class PosController extends Controller
      */
     public function createInvoice(Request $request)
     {
-        $rules = [
-            'customer_id' => 'required|string'
-        ];
 
-        $validatedData = $request->validate($rules);
-        $customer = Customer::where('id', $validatedData['customer_id'])->first();
-        $carts = Cart::content();
+        $customer = null;
 
-        return view('pos.create', [
-            'customer' => $customer,
-            'carts' => $carts
-        ]);
+        if($request->customer_id == ''){
+
+            $rules = [
+                'customer_id' => 'required|string'
+            ];
+
+            $validatedData = $request->validate($rules);
+            $customer = Customer::where('id', $validatedData['customer_id'])->first();
+        }
+        
+            $carts = Cart::content();
+
+            return view('pos.create', [
+                'customer' => $customer,
+                'carts' => $carts
+            ]);       
     }
 }

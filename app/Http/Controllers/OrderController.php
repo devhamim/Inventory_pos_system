@@ -154,7 +154,7 @@ class OrderController extends Controller
 
             OrderDetails::insert($oDetails);
         }
-
+        
         // Delete Cart Sopping History
         Cart::destroy();
 

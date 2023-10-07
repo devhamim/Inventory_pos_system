@@ -130,17 +130,12 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <label class="small mb-1" for="customer_id">Customer <span class="text-danger">*</span></label>
-                                <select class="form-select form-control-solid @error('customer_id') is-invalid @enderror" id="customer_id" name="customer_id">
+                                <select class="form-select form-control-solid" id="customer_id" name="customer_id">
                                     <option selected="" disabled="">Select a customer:</option>
                                     @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}" @if(old('customer_id') == $customer->id) selected="selected" @endif>{{ $customer->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('customer_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
                                 <!-- Submit button -->
                             <div class="col-md-12 mt-4">
