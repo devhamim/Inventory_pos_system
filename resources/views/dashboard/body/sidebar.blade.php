@@ -41,6 +41,20 @@
                 <div class="nav-link-icon"><i class="fa-solid fa-flag"></i></div>
                 Daily Purchase Report
             </a>
+             <!-- Sidenav Heading (Expenses)-->
+            <div class="sidenav-menu-heading">Expenses</div>
+            <a class="nav-link {{ Request::is('expenses', 'expenses/create*', 'expenses/details*') ? 'active' : '' }}" href="{{ route('expenses.allExpenses') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
+                All
+            </a>
+            <a class="nav-link {{ Request::is('expenses/approved*') ? 'active' : '' }}" href="{{ route('expenses.approvedExpenses') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>
+                Approval
+            </a>
+            <a class="nav-link {{ Request::is('expenses/report*') ? 'active' : '' }}" href="{{ route('expenses.dailyExpensesReport') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-flag"></i></div>
+                Daily Purchase Report
+            </a>
 
             <!-- Sidenav Accordion (Pages)-->
             {{-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

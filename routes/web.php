@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DefaultController;
+use App\Http\Controllers\expensesController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PosController;
@@ -86,6 +87,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchases/report', [PurchaseController::class, 'dailyPurchaseReport'])->name('purchases.dailyPurchaseReport');
     Route::get('/purchases/report/export', [PurchaseController::class, 'getPurchaseReport'])->name('purchases.getPurchaseReport');
     Route::post('/purchases/report/export', [PurchaseController::class, 'exportPurchaseReport'])->name('purchases.exportPurchaseReport');
+    
+    // Route expenses
+    Route::get('/expenses', [expensesController::class, 'allExpenses'])->name('expenses.allExpenses');
+    Route::get('/expenses/approved', [expensesController::class, 'approvedExpenses'])->name('expenses.approvedExpenses');
+    Route::get('/expenses/create', [expensesController::class, 'createExpenses'])->name('expenses.createExpenses');
+    Route::post('/expenses', [expensesController::class, 'storeExpenses'])->name('expenses.storeExpenses');
+    Route::put('/expenses/update', [expensesController::class, 'updateExpenses'])->name('expenses.updateExpenses');
+    Route::get('/expenses/details/{expenses_id}', [expensesController::class, 'expensesDetails'])->name('expenses.expensesDetails');
+    Route::delete('/expenses/delete/{expenses_id}', [expensesController::class, 'deleteExpenses'])->name('expenses.deleteExpenses');
+
+    Route::get('/expenses/report', [expensesController::class, 'dailyExpensesReport'])->name('expenses.dailyExpensesReport');
+    Route::get('/expenses/report/export', [expensesController::class, 'getExpensesReport'])->name('expenses.getExpensesReport');
+    Route::post('/expenses/report/export', [expensesController::class, 'exportExpensesReport'])->name('expenses.exportexpensesReport');
 
     // User Management
     Route::resource('/users', UserController::class)->except(['show']);

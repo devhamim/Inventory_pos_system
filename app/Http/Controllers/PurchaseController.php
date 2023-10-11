@@ -119,7 +119,7 @@ class PurchaseController extends Controller
         $validatedData['created_at'] = Carbon::now();
 
         $purchase_id = Purchase::insertGetId($validatedData);
-
+        
         // Create Purchase Details
         $pDetails = array();
         $products = count($request->product_id);
