@@ -98,8 +98,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($purchases as $purchase)
-                                <tr>
+                                @foreach ($expenses as $expense)
+                                {{-- <tr>
                                     <th scope="row">{{ (($purchases->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
                                     <td>{{ $purchase->purchase_no }}</td>
                                     <td>{{ $purchase->supplier->name }}</td>
@@ -131,8 +131,8 @@
                                             </div>
                                         </td>
                                     @endif
-                                </tr>
-                                @endforeach --}}
+                                </tr> --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
