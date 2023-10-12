@@ -28,7 +28,7 @@
 
 <!-- BEGIN: Main Page Content -->
 <div class="container-xl px-2 mt-n10">
-    <form action="{{ route('purchases.getReportPurchase') }}" method="POST">
+    <form action="{{ route('purchases.exportPurchaseReport') }}" method="POST">
         @csrf
         <div class="row">
 

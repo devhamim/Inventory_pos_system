@@ -47,13 +47,13 @@
                 <div class="nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
                 All
             </a>
-            <a class="nav-link {{ Request::is('expenses/approved*') ? 'active' : '' }}" href="{{ route('expenses.approvedExpenses') }}">
+            {{-- <a class="nav-link {{ Request::is('expenses/approved*') ? 'active' : '' }}" href="{{ route('expenses.approvedExpenses') }}">
                 <div class="nav-link-icon"><i class="fa-solid fa-circle-check"></i></div>
                 Approval
-            </a>
+            </a> --}}
             <a class="nav-link {{ Request::is('expenses/report*') ? 'active' : '' }}" href="{{ route('expenses.dailyExpensesReport') }}">
                 <div class="nav-link-icon"><i class="fa-solid fa-flag"></i></div>
-                Daily Purchase Report
+                Daily Expenses Report
             </a>
 
             <!-- Sidenav Accordion (Pages)-->

@@ -17,6 +17,7 @@ class Expenses extends Model
         'expenses_date',
         'name',
         'amount',
+        'recipient_name',
     ];
 
     // protected $with = [
@@ -42,7 +43,7 @@ class Expenses extends Model
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
-                $query->where('expenses_date', 'like', '%' . $search . '%');
+                $query->where('expenses_id', 'like', '%' . $search . '%')->orWhere('name', 'like', '%' . $search . '%')->orWhere('category', 'like', '%' . $search . '%')->orWhere('expenses_date', 'like', '%' . $search . '%')->orWhere('recipient_name', 'like', '%' . $search . '%')->orWhere('payment_type', 'like', '%' . $search . '%');
             });
         });
     }

@@ -9,7 +9,7 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        Purchase Report
+                        Expenses Report
                     </h1>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('purchases.allPurchases') }}">Purchase</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('expenses.allExpenses') }}">Expenses</a></li>
                     <li class="breadcrumb-item active">Report</li>
                 </ol>
             </nav>
@@ -28,15 +28,15 @@
 
 <!-- BEGIN: Main Page Content -->
 <div class="container-xl px-2 mt-n10">
-    <form action="{{ route('purchases.getReportPurchase') }}" method="POST">
+    <form action="{{ route('expenses.exportexpensesReport') }}" method="POST">
         @csrf
         <div class="row">
 
             <div class="col-xl-12">
-                <!-- BEGIN: Product Details -->
+                <!-- BEGIN: Expenses Details -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        Purchase Report Details
+                        Expenses Report Details
                     </div>
                     <div class="card-body">
                         <!-- Form Row -->
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <label class="small my-1" for="start_date">Start Date <span class="text-danger">*</span></label>
                                 <input class="form-control form-control-solid example-date-input @error('start_date') is-invalid @enderror" name="start_date" id="date" type="date" value="{{ old('start_date') }}">
-                                @error('purchase_date')
+                                @error('start_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -68,7 +68,7 @@
                         <a class="btn btn-danger" href="{{ URL::previous() }}">Cancel</a>
                     </div>
                 </div>
-                <!-- END: Product Details -->
+                <!-- END: Expenses Details -->
             </div>
         </div>
     </form>

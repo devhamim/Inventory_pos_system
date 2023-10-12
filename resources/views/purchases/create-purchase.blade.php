@@ -9,7 +9,7 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        Add Expenses
+                        Add Purchases
                     </h1>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('expenses.index') }}">Expenses</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('purchases.allPurchases') }}">Purchases</a></li>
                     <li class="breadcrumb-item active">Create</li>
                 </ol>
             </nav>

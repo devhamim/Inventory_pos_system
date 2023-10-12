@@ -13,7 +13,7 @@
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('purchases.getPurchaseReport') }}" class="btn btn-success add-list my-1"><i class="fa-solid fa-file-export me-3"></i>Export</a>
+                    <a href="{{ route('expenses.getExpensesReport') }}" class="btn btn-success add-list my-1"><i class="fa-solid fa-file-export me-3"></i>Export</a>
                     <a href="{{ route('expenses.createExpenses') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
                     <a href="{{ route('expenses.allExpenses') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
@@ -89,56 +89,71 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">@sortablelink('expenses_id')</th>
                                     <th scope="col">@sortablelink('name')</th>
-                                    {{-- <th scope="col">@sortablelink('expenses_date', 'Date')</th> --}}
-                                    <th scope="col">@sortablelink('amount')</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">@sortablelink('category')</th>
+                                    <th scope="col">@sortablelink('expenses_date', 'Date')</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">@sortablelink('recipient_name')</th>
+                                    <th scope="col">@sortablelink('payment_type')</th>
+                                    <th scope="col">Expenses Note</th>
+                                    {{-- <th scope="col">Status</th>
+                                    <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($expenses as $expense)
-                                {{-- <tr>
-                                    <th scope="row">{{ (($purchases->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
-                                    <td>{{ $purchase->purchase_no }}</td>
-                                    <td>{{ $purchase->supplier->name }}</td>
-                                    <td>{{ $purchase->purchase_date }}</td>
-                                    <td>{{ $purchase->total_amount }}</td>
-                                    @if ($purchase->purchase_status == 1)
-                                        <td>
-                                            <span class="btn btn-success btn-sm text-uppercase">approved</span>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="{{ route('purchases.purchaseDetails', $purchase->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
+                                    <tr>
+                                        <th scope="row">{{ (($expenses->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
+                                        <td scope="row">
+                                            <div style="max-height: 80px; max-width: 80px;">
+                                                <img class="img-fluid"  src="{{ $expense->image ? asset('storage/expenses/'.$expense->image) : asset('assets/img/products/default.webp') }}">
                                             </div>
                                         </td>
-                                    @else
-                                        <td>
-                                            <span class="btn btn-warning btn-sm text-uppercase">pending</span>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="{{ route('purchases.purchaseDetails', $purchase->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
-                                                <form action="{{ route('purchases.deletePurchase', $purchase->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    @endif
-                                </tr> --}}
+                                        <td>{{ $expense->expenses_id }}</td>
+                                        <td>{{ $expense->name }}</td>
+                                        <td>{{ $expense->category }}</td>
+                                        <td>{{ $expense->expenses_date }}</td>
+                                        <td>{{ $expense->amount }}</td>
+                                        <td>{{ $expense->recipient_name }}</td>
+                                        <td>{{ $expense->payment_type }}</td>
+                                        <td>{{ $expense->expenses_note }}</td>
+                                        {{-- @if ($expense->expenses_status == 1)
+                                            <td>
+                                                <span class="btn btn-success btn-sm text-uppercase">approved</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="{{ route('expenses.expensesDetails', $expense->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
+                                                </div>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <span class="btn btn-warning btn-sm text-uppercase">pending</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="{{ route('expenses.expensesDetails', $expense->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
+                                                    <form action="{{ route('expenses.deleteExpenses', $expense->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        @endif --}}
+                                    </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                {{-- {{ $purchases->links() }} --}}
+                {{ $expenses->links() }}
             </div>
         </div>
     </div>

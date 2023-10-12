@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('recipient_name');
             $table->string('payment_type');
             $table->string('expenses_note')->nullable();
+            $table->char('expenses_status', 1)->default(0)->comment('0=Pending, 1=Approved');
             $table->timestamps();
         });
     }

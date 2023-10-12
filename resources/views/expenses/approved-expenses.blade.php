@@ -9,19 +9,19 @@
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-cash-register"></i></div>
-                        Approved Purchase List
+                        Expenses List
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('purchases.createPurchase') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
-                    <a href="{{ route('purchases.allPurchases') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('expenses.createExpenses') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
+                    <a href="{{ route('expenses.dailyExpensesReport') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
             </div>
 
             <nav class="mt-4 rounded" aria-label="breadcrumb">
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Approved Purchases</li>
+                    <li class="breadcrumb-item active">Expenses</li>
                 </ol>
             </nav>
         </div>
@@ -88,30 +88,44 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">Purchase</th>
-                                    <th scope="col">@sortablelink('supplier.name', 'Supplier')</th>
-                                    <th scope="col">@sortablelink('purchase_date', 'Date')</th>
-                                    <th scope="col">@sortablelink('total')</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">@sortablelink('expenses_id')</th>
+                                    <th scope="col">@sortablelink('name')</th>
+                                    <th scope="col">@sortablelink('category')</th>
+                                    <th scope="col">@sortablelink('expenses_date', 'Date')</th>
+                                    <th scope="col">@sortablelink('amount')</th>
+                                    <th scope="col">@sortablelink('recipient_name')</th>
+                                    <th scope="col">@sortablelink('payment_type')</th>
+                                    <th scope="col">@sortablelink('expenses_note')</th>
+                                    {{-- <th scope="col">Status</th>
+                                    <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($purchases as $purchase)
+                                @foreach ($expenses as $expense)
                                 <tr>
-                                    <th scope="row">{{ (($purchases->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
-                                    <td>{{ $purchase->purchase_no }}</td>
-                                    <td>{{ $purchase->supplier->name }}</td>
-                                    <td>{{ $purchase->purchase_date }}</td>
-                                    <td>{{ $purchase->total_amount }}</td>
-                                    <td>
-                                        <span class="btn btn-{{ $purchase->purchase_status == 0 ? 'warning' : 'success' }} btn-sm text-uppercase">{{ $purchase->purchase_status == 0 ? 'pending' : 'approved' }}</span>
+                                    <th scope="row">{{ (($expenses->currentPage() * (request('row') ? request('row') : 10)) - (request('row') ? request('row') : 10)) + $loop->iteration  }}</th>
+                                        <td scope="row">
+                                            <div style="max-height: 80px; max-width: 80px;">
+                                                <img class="img-fluid"  src="{{ $expense->image ? asset('storage/expenses/'.$expense->image) : asset('assets/img/products/default.webp') }}">
+                                            </div>
+                                        </td>
+                                        <td>{{ $expense->expenses_id }}</td>
+                                        <td>{{ $expense->name }}</td>
+                                        <td>{{ $expense->category }}</td>
+                                        <td>{{ $expense->expenses_date }}</td>
+                                        <td>{{ $expense->amount }}</td>
+                                        <td>{{ $expense->recipient_name }}</td>
+                                        <td>{{ $expense->payment_type }}</td>
+                                        <td>{{ $expense->expenses_note }}</td>
+                                    {{-- <td>
+                                        <span class="btn btn-{{ $expense->purchase_status == 0 ? 'warning' : 'success' }} btn-sm text-uppercase">{{ $expense->purchase_status == 0 ? 'pending' : 'approved' }}</span>
                                     </td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('purchases.purchaseDetails', $purchase->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -119,7 +133,7 @@
                     </div>
                 </div>
 
-                {{ $purchases->links() }}
+                {{ $expenses->links() }}
             </div>
         </div>
     </div>
