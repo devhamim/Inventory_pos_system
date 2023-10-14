@@ -192,12 +192,12 @@ class expensesController extends Controller
         foreach($expenses as $expense)
         {
             $expense_array[] = array(
-                'Date' => $expense->expenses_date,
-                'Expenses id' => $expense->expenses_id,
-                'Name' => $expense->name,
-                'Category' => $expense->category,
-                'Recipient Name' => $expense->recipient_name,
-                'Amount' => $expense->amount,
+                'Date'              => $expense->expenses_date,
+                'Expenses id'       => $expense->expenses_id,
+                'Name'              => $expense->name,
+                'Category'          => $expense->category,
+                'Recipient Name'    => $expense->recipient_name,
+                'Amount'            => $expense->amount,
             );
         }
 

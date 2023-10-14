@@ -65,8 +65,8 @@ class CustomerController extends Controller
          * Handle upload an image
          */
         if ($file = $request->file('photo')) {
-            $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
-            $path = 'public/customers/';
+            $fileName   = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
+            $path       = 'public/customers/';
 
             // Store an image to Storage
             $file->storeAs($path, $fileName);

@@ -103,8 +103,8 @@ class OrderController extends Controller
             ->get();
 
         return view('orders.details-order', [
-            'order' => $order,
-            'orderDetails' => $orderDetails,
+            'order'         => $order,
+            'orderDetails'  => $orderDetails,
         ]);
     }
 
@@ -114,29 +114,29 @@ class OrderController extends Controller
     public function createOrder(Request $request)
     {
         $rules = [
-            'customer_id' => '',
-            'payment_type' => 'required|string',
-            'pay' => 'required|numeric',
+            'customer_id'   => '',
+            'payment_type'  => 'required|string',
+            'pay'           => 'required|numeric',
         ];
 
         $invoice_no = IdGenerator::generate([
-            'table' => 'orders',
-            'field' => 'invoice_no',
-            'length' => 10,
-            'prefix' => 'INV-'
+            'table'     => 'orders',
+            'field'     => 'invoice_no',
+            'length'    => 10,
+            'prefix'    => 'INV-'
         ]);
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['order_date'] = Carbon::now()->format('Y-m-d');
-        $validatedData['order_status'] = 'pending';
-        $validatedData['total_products'] = Cart::count();
-        $validatedData['sub_total'] = Cart::subtotal();
-        $validatedData['vat'] = Cart::tax();
-        $validatedData['invoice_no'] = $invoice_no;
-        $validatedData['total'] = Cart::total();
-        $validatedData['due'] = ((int)Cart::total() - (int)$validatedData['pay']);
-        $validatedData['created_at'] = Carbon::now();
+        $validatedData['order_date']        = Carbon::now()->format('Y-m-d');
+        $validatedData['order_status']      = 'pending';
+        $validatedData['total_products']    = Cart::count();
+        $validatedData['sub_total']         = Cart::subtotal();
+        $validatedData['vat']               = Cart::tax();
+        $validatedData['invoice_no']        = $invoice_no;
+        $validatedData['total']             = Cart::total();
+        $validatedData['due']               = ((int)Cart::total() - (int)$validatedData['pay']);
+        $validatedData['created_at']        = Carbon::now();
 
         $order_id = Order::insertGetId($validatedData);
 
@@ -145,11 +145,11 @@ class OrderController extends Controller
         $oDetails = array();
 
         foreach ($contents as $content) {
-            $oDetails['order_id'] = $order_id;
+            $oDetails['order_id']   = $order_id;
             $oDetails['product_id'] = $content->id;
-            $oDetails['quantity'] = $content->qty;
-            $oDetails['unitcost'] = $content->price;
-            $oDetails['total'] = $content->subtotal;
+            $oDetails['quantity']   = $content->qty;
+            $oDetails['unitcost']   = $content->price;
+            $oDetails['total']      = $content->subtotal;
             $oDetails['created_at'] = Carbon::now();
 
             OrderDetails::insert($oDetails);
@@ -187,8 +187,8 @@ class OrderController extends Controller
     public function updateDueOrder(Request $request)
     {
         $rules = [
-            'id' => 'required|numeric',
-            'pay' => 'required|numeric'
+            'id'    => 'required|numeric',
+            'pay'   => 'required|numeric'
         ];
 
         $validatedData = $request->validate($rules);
@@ -220,8 +220,8 @@ class OrderController extends Controller
                         ->get();
 
         return view('orders.print-invoice', [
-            'order' => $order,
-            'orderDetails' => $orderDetails,
+            'order'         => $order,
+            'orderDetails'  => $orderDetails,
         ]);
     }
 }

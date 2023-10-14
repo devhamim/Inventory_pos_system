@@ -56,10 +56,10 @@ class Controller extends BaseController
             ->count();
 
         return view('dashboard.index', [
-            'currentmonth' => $currentmonth,
+            'currentmonth'      => $currentmonth,
             'currentMonthorder' => $currentMonthorder,
-            'currentMonthdue' => $currentMonthdue,
-            'totalOrders' => $totalOrders,
+            'currentMonthdue'   => $currentMonthdue,
+            'totalOrders'       => $totalOrders,
         ]);
     }
 }
