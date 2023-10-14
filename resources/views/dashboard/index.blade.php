@@ -1,6 +1,5 @@
 @extends('dashboard.body.main')
 
-
 @section('specificpagestyles')
 <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
 @endsection
@@ -20,11 +19,9 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
-                       
                         <div class="page-header-icon"><i data-feather="activity"></i></div>
                         Dashboard
                     </h1>
-                   
                     <div class="page-header-subtitle">Example dashboard overview and content summary</div>
                 </div>
                 <div class="col-12 col-xl-auto mt-4">
