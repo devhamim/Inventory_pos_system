@@ -20,16 +20,22 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
+                       
                         <div class="page-header-icon"><i data-feather="activity"></i></div>
                         Dashboard
                     </h1>
+                   
                     <div class="page-header-subtitle">Example dashboard overview and content summary</div>
                 </div>
                 <div class="col-12 col-xl-auto mt-4">
-                    <div class="input-group input-group-joined border-0" style="width: 16.5rem">
-                        <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
-                        <input class="form-control ps-0 pointer" id="litepickerRangePlugin" placeholder="Select date range..." />
-                    </div>
+                    {{-- <form action="{{ route('dashboard') }}" method="GET">
+                        @csrf
+                        <div class="input-group input-group-joined border-0" style="width: 16.5rem">
+                            <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
+                            <input class="form-control ps-0 pointer" name="calender" id="litepickerRangePlugin" placeholder="Select date range..." />
+                            <button class="btn btn-primary" type="submit">submit</button>
+                        </div>
+                    </form> --}}
                 </div>
             </div>
         </div>
