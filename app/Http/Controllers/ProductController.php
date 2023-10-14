@@ -46,9 +46,9 @@ class ProductController extends Controller
     public function create()
     {
         return view('products.create', [
-            'categories' => Category::all(),
-            'units' => Unit::all(),
-            'suppliers' => Supplier::all(),
+            'categories'    => Category::all(),
+            'units'         => Unit::all(),
+            'suppliers'     => Supplier::all(),
         ]);
     }
 
@@ -58,22 +58,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product_code = IdGenerator::generate([
-            'table' => 'products',
-            'field' => 'product_code',
-            'length' => 4,
-            'prefix' => 'PC'
+            'table'     => 'products',
+            'field'     => 'product_code',
+            'length'    => 4,
+            'prefix'    => 'PC'
         ]);
 
         $rules = [
             'product_image' => 'image|file|max:2048',
-            'product_name' => 'required|string',
-            'category_id' => 'required|integer',
-            'unit_id' => 'required|integer',
-            'stock' => 'required|integer',
-            'buying_price' => 'required|integer',
+            'product_name'  => 'required|string',
+            'category_id'   => 'required|integer',
+            'unit_id'       => 'required|integer',
+            'stock'         => 'required|integer',
+            'buying_price'  => 'required|integer',
             'selling_price' => 'required|integer',
-            'color' => '',
-            'size' => '',
+            'color'         => '',
+            'size'          => '',
         ];
 
         $validatedData = $request->validate($rules);
@@ -122,9 +122,9 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         return view('products.edit', [
-            'categories' => Category::all(),
-            'units' => Unit::all(),
-            'product' => $product
+            'categories'=> Category::all(),
+            'units'     => Unit::all(),
+            'product'   => $product
         ]);
     }
 
@@ -135,14 +135,14 @@ class ProductController extends Controller
     {
         $rules = [
             'product_image' => 'image|file|max:2048',
-            'product_name' => 'required|string',
-            'category_id' => 'required|integer',
-            'unit_id' => 'required|integer',
-            'stock' => 'required|integer',
-            'buying_price' => 'required|integer',
+            'product_name'  => 'required|string',
+            'category_id'   => 'required|integer',
+            'unit_id'       => 'required|integer',
+            'stock'         => 'required|integer',
+            'buying_price'  => 'required|integer',
             'selling_price' => 'required|integer',
-            'color' => '',
-            'size' => '',
+            'color'         => '',
+            'size'          => '',
         ];
 
         $validatedData = $request->validate($rules);
